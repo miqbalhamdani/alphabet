@@ -65,6 +65,36 @@ npm run deploy:project
 
 After deployment, Cloudflare will return the live URL.
 
+## Cloudflare Error Fix (Your Current Issue)
+
+If Cloudflare logs show:
+
+- `It looks like you've run a Workers-specific command in a Pages project.`
+
+then your deploy command is currently wrong in Cloudflare.
+
+Use one of these instead:
+
+```bash
+npx wrangler pages deploy . --project-name alphabet
+```
+
+or
+
+```bash
+npm run deploy:alphabet
+```
+
+Do not use:
+
+```bash
+npx wrangler deploy
+```
+
+because that command is for Workers, not Pages.
+
+Also, Wrangler has been upgraded to v4 in [package.json](package.json).
+
 ## Notes
 
 - This is a static app, so `pages_build_output_dir = "."` is used.
