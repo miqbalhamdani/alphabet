@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Letter Display</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --fg: #f8fafc;
+        --accent: #38bdf8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at top, #1e293b, var(--bg));
+        color: var(--fg);
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      .container {
+        width: min(92vw, 980px);
+        text-align: center;
+      }
+
+      .letter {
+        margin: 0;
+        font-size: clamp(10rem, 52vw, 34rem);
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-shadow: 0 8px 36px rgba(56, 189, 248, 0.4);
+        user-select: none;
+      }
+
+      .letter-lower {
+        margin: 0.35rem 0 0;
+        font-size: clamp(4.4rem, 20vw, 12rem);
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        opacity: 0.9;
+        user-select: none;
+      }
+
+      .hint {
+        margin-top: 1rem;
+        font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+        opacity: 0.85;
+      }
+
+      .key {
+        color: var(--accent);
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1 id="letter" class="letter">A</h1>
+      <p id="letterLower" class="letter-lower">a</p>
+      <p class="hint">
+        Type any <span class="key">A-Z</span> key. Non-letter keys are ignored.
+      </p>
+    </main>
+
+    <script>
+      const letterEl = document.getElementById("letter");
+      const letterLowerEl = document.getElementById("letterLower");
+      let lastLetter = "A";
+
+      window.addEventListener("keydown", (event) => {
+        if (/^[a-zA-Z]$/.test(event.key)) {
+          lastLetter = event.key.toUpperCase();
+          letterEl.textContent = lastLetter;
+          letterLowerEl.textContent = lastLetter.toLowerCase();
+        }
+      });
+    </script>
+  </body>
+</html>
