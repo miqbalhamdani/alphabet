@@ -1,0 +1,12 @@
+{
+  "name": "alphabet",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "wrangler pages deploy .",
+    "deploy:project": "wrangler pages deploy . --project-name $CF_PAGES_PROJECT"
+  },
+  "devDependencies": {
+    "wrangler": "^3.100.0"
+  }
+}

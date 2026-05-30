@@ -20,8 +20,55 @@ Press any keyboard letter key to update both values.
 ```text
 .
 ├── index.html
+├── package.json
+├── wrangler.toml
 └── README.md
 ```
+
+## Cloudflare Pages (Wrangler Setup)
+
+This project is ready to deploy with Wrangler using:
+
+- [wrangler.toml](wrangler.toml)
+- [package.json](package.json)
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Log in to Cloudflare
+
+```bash
+npx wrangler login
+```
+
+### 3. Create your Pages project (first time only)
+
+Create a Pages project in the Cloudflare dashboard first, then deploy.
+
+### 4. Deploy
+
+Option A: deploy directly (Wrangler can prompt for/select project)
+
+```bash
+npm run deploy
+```
+
+Option B: deploy to a specific project name
+
+```bash
+export CF_PAGES_PROJECT="your-pages-project-name"
+npm run deploy:project
+```
+
+After deployment, Cloudflare will return the live URL.
+
+## Notes
+
+- This is a static app, so `pages_build_output_dir = "."` is used.
+- `compatibility_date` is set in [wrangler.toml](wrangler.toml) and can be updated any time.
 
 ## How to Run
 
